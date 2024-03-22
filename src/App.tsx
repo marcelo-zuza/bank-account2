@@ -1,4 +1,3 @@
-import { Route, Routes, BrowserRouter } from "react-router-dom"
 import { useState } from "react"
 // components
 import NavBar from "./components/NavBar"
