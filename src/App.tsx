@@ -13,7 +13,7 @@ const App = () => {
     <div className="bg-green-200 font-roboto h-screen">
       <NavBar loggedBy={loggedBy} />
       <div className="py-20">
-        {logged ? <Logged /> : <Unlogged />}
+        {logged ? <Logged /> : <Unlogged logged={logged} setLogged={setLogged} setLoggedBy={setLoggedBy} />}
       </div>
     </div>
   )

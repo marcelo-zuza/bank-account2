@@ -6,11 +6,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail, 
-  onAuthStateChanged
+  onAuthStateChanged,
 
 } from "firebase/auth";
 
-const AuthContext = React.createContext(null);
+const AuthContext = React.createContext({} as any);
 
 export function useAuth() {
   return useContext(AuthContext);
