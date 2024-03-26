@@ -17,6 +17,7 @@ const SignUp = (props: Props) => {
   const [error, setError] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
   const [errorAlert, setErrorAlert] = useState<boolean>(false)
+  const [name, setName] = useState<string>("")
   const navigate = useNavigate()
 
   const alertError = () => {
@@ -33,7 +34,7 @@ const SignUp = (props: Props) => {
     try {
         setError("")
         setLoading(true)
-        await signup(emailRef.current!.value, passwordRef.current!.value)
+        await signup(emailRef.current!.value, passwordRef.current!.value, name)
         props.setLogged(true)
         props.setLoggedBy(emailRef.current!.value)
         navigate("/")
@@ -53,6 +54,8 @@ const SignUp = (props: Props) => {
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col md:mx-16">
                 {/* <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="text" name="name" placeholder="Name" required /> */}
+                <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="text" name="name" placeholder="name" required value={name} onChange={e => setName(e.target.value)} />
+
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="email" name="email" placeholder="Email" required ref={emailRef} />
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Password" required ref={passwordRef} />
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Repeat Password" required ref={passwordConfirmRef} />

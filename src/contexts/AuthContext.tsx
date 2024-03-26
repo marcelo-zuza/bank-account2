@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect} from "react";
 import { authConfig } from "../firebase/firebase";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
 
 import { 
   createUserWithEmailAndPassword, 
@@ -24,9 +26,20 @@ export function AuthProvider(props: Props) {
   const [currentUser, setCurrentUser] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
 
-  function signup(email: string, password: string) {
-    return createUserWithEmailAndPassword(authConfig, email, password);
+
+  // create a user credencial conecting firebase auth and firestore
+  async function signup(email: string, password: string, name: string) {
+    const userCredential = await createUserWithEmailAndPassword(authConfig, email, password);
+    const user = userCredential.user;
+    await setDoc(doc(db, 'users', user.uid), {
+      name: name || 'Sem nome',
+      email,
+      balance: 0
+    })
+
+    return userCredential;
   }
+
 
   function login(email: string, password: string) {
     return signInWithEmailAndPassword(authConfig, email, password);
