@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect} from "react";
 import { authConfig } from "../firebase/firebase";
-import { getFirestore, setDoc, doc } from "firebase/firestore";
+import {  setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 import { 
@@ -40,10 +40,12 @@ export function AuthProvider(props: Props) {
     return userCredential;
   }
 
-
-  function login(email: string, password: string) {
-    return signInWithEmailAndPassword(authConfig, email, password);
-  }
+    // sign in a user credencial conecting firebase auth and firestore
+  async function login(email: string, password: string) {
+    const userCredential = await signInWithEmailAndPassword(authConfig, email, password);
+    const user = userCredential.user;
+    return user   
+} 
 
   function logout() {
     return signOut(authConfig);
