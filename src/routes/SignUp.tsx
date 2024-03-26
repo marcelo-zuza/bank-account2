@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   logged: boolean
@@ -56,6 +56,8 @@ const SignUp = (props: Props) => {
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="email" name="email" placeholder="Email" required ref={emailRef} />
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Password" required ref={passwordRef} />
                 <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Repeat Password" required ref={passwordConfirmRef} />
+                {errorAlert ? <p className='text-red-500 text-center'>{error}</p> : <></>}
+
                 <button disabled={loading} className='bg-sky-600 text-white py-1 px-2 my-2 rounded-md'>Sign In</button>
             </form>
 

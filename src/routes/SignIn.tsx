@@ -22,7 +22,8 @@ const SignIn = (props: Props) => {
     const navigate = useNavigate()
 
     const alertError = () => {
-        setTimeout(() => setErrorAlert(true), 3000)
+        setErrorAlert(true)
+        setTimeout(() => setErrorAlert(false), 6000)
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,9 +52,11 @@ const SignIn = (props: Props) => {
                 <img src={PaperMoney} alt="papermoney" />
             </div>
             <form onSubmit={handleSubmit} className="flex flex-col md:mx-16">
-                <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="email" name="email" placeholder="Email" ref={emailRef} />
-                <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Password" ref={passwordRef} />
-                {errorAlert ? <p className='text-red-500 text-center'>{error}</p> : <></>}
+                <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="email" name="email" placeholder="Email" required ref={emailRef} />
+                <input className="text-gray-500 border-gray-300 border-2 py-1 px-2 my-2 rounded-md" type="password" name="password" placeholder="Password" required ref={passwordRef} />
+                {errorAlert ? <p className='bg-red-700 text-white text-center font-extrabold rounded-lg'>{error}</p> : <></>}
+
+                <p className="text-sm text-center text-gray-500">Forgot your password? <Link to='/forgot' className='text-sky-600 font-bold hover:underline '>Click here</Link></p>
                 <button className='bg-sky-600 text-white py-1 px-2 my-2 rounded-md' disabled={loading}>Sign In</button>
                 <p className='text-center'>or</p>
                 <button className='bg-white text-gray-400 border-gray-300 border-2 py-1 px-2 my-2 rounded-md flex flex-row justify-center'><img className='h-5 w-5 mx-2' src={GoogleICon} alt="" />Google</button>
