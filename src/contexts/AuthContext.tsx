@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect} from "react";
 import { authConfig } from "../firebase/firebase";
-import {  setDoc, doc } from "firebase/firestore";
+import {  setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 import { 
@@ -22,9 +22,15 @@ export function useAuth() {
     children: React.ReactNode
   }
 
+  interface User {
+    name: string
+    balance: number
+  }
+
 export function AuthProvider(props: Props) {
   const [currentUser, setCurrentUser] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [userNow, setUserNow] = useState<User>({name: '', balance: 0})
 
 
   // create a user credencial conecting firebase auth and firestore
@@ -44,8 +50,19 @@ export function AuthProvider(props: Props) {
   async function login(email: string, password: string) {
     const userCredential = await signInWithEmailAndPassword(authConfig, email, password);
     const user = userCredential.user;
+    getData()
     return user   
 } 
+
+const getData = async () => {
+  const querySnapshot = await getDoc(doc(db, "users", currentUser.uid));
+  const newItems: User = {
+    name: querySnapshot.data()?.name,
+    balance: querySnapshot.data()?.balance
+  }
+  setUserNow(newItems)
+}
+
 
   function logout() {
     return signOut(authConfig);
@@ -78,7 +95,9 @@ export function AuthProvider(props: Props) {
     logout,
     resetPassword,
     updateEmail,
-    updatePassword
+    updatePassword,
+    userNow,
+    getData
   }
 
   return (
