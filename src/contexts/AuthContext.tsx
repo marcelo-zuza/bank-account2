@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect} from "react";
 import { authConfig } from "../firebase/firebase";
-import {  setDoc, doc, getDoc } from "firebase/firestore";
+import {  setDoc, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
 import { 
@@ -63,6 +63,24 @@ const getData = async () => {
   setUserNow(newItems)
 }
 
+const increaseBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, value: number) => {
+  e.preventDefault()
+  await updateDoc(doc(db, "users", currentUser.uid), {
+    balance: userNow.balance + value
+  })
+  getData()
+  
+}
+
+const decreaseBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, value: number) => {
+  e.preventDefault()
+  await updateDoc(doc(db, "users", currentUser.uid), {
+    balance: userNow.balance - value
+  })
+  getData()
+  
+}
+
 
   function logout() {
     return signOut(authConfig);
@@ -97,7 +115,9 @@ const getData = async () => {
     updateEmail,
     updatePassword,
     userNow,
-    getData
+    getData,
+    increaseBalance,
+    decreaseBalance
   }
 
   return (
