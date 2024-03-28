@@ -84,6 +84,7 @@ const decreaseBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent
 
   function logout() {
     return signOut(authConfig);
+
   }
 
   function resetPassword(email: string) {
