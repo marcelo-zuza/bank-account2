@@ -10,6 +10,7 @@ import {
   sendPasswordResetEmail, 
   onAuthStateChanged,
 
+
 } from "firebase/auth";
 
 const AuthContext = React.createContext({} as any);
@@ -81,7 +82,6 @@ const decreaseBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent
   
 }
 
-
   function logout() {
     return signOut(authConfig);
 
@@ -119,6 +119,7 @@ const decreaseBalance = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent
     getData,
     increaseBalance,
     decreaseBalance
+    
   }
 
   return (

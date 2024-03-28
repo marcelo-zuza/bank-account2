@@ -1,9 +1,8 @@
 import { useRef, useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 
-type Props = {}
 
-const ForgotPassword = (props: Props) => {
+const ForgotPassword = () => {
 
     const emailRef = useRef<HTMLInputElement>(null)
     const { resetPassword } = useAuth()

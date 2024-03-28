@@ -1,4 +1,5 @@
 import PaperMoney from '../assets/img/Logo.png'
+import { Link } from 'react-router-dom'
 
 import { useAuth } from '../contexts/AuthContext'
 type Props = {
@@ -12,8 +13,8 @@ const NavBar = (props: Props) => {
   return (
     <div className="bg-green-700 flex flex-1 w-screen absolute py-2">
         <div className="flex flex-row">
-            <img className='h-16 md:h-10' src={PaperMoney} alt="" />
-            <h1 className='text-white text-2xl md:text-2xl px-2'>Zuza's Bank</h1>
+            <Link to="/"><img className='h-16 md:h-10' src={PaperMoney} alt="" /></Link>
+            <Link to="/"><h1 className='text-white text-2xl md:text-2xl px-2'>Zuza's Bank</h1></Link>
         </div>
         <div className="flex flex-1 justify-end content-end">
           <div className="flex flex-col">

@@ -1,1 +1,1 @@
-## Bank Account App developed by Marcelo Zuzaz
+## A banking application  which is possible to register, login, access their bank balance, make deposits and withdrawals. Developed with Typescript, React.js, Tailwind CSS, and Firebase.
