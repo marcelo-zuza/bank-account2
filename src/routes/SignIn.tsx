@@ -51,7 +51,9 @@ const SignIn = (props: Props) => {
   return (
     <div className="flex flex-1 justify-center">
         <div className="bg-white my-8 mx-4 px-2 py-4 md:px-28 md:py-6 rounded-lg shadow-2xl">
-            <h1 className="text-3xl md:text-4xl text-center">SignIn to access your account</h1>
+            <h1 className="text-3xl md:text-4xl text-center">Welcome to Zuza's Bank</h1>
+            <h1 className="text-2xl md:text-3xl text-center">SignIn to access your account</h1>
+
             <div className="flex flex-auto justify-center my-4">
                 <img src={PaperMoney} alt="papermoney" />
             </div>

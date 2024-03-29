@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAuth } from "../contexts/AuthContext"
 import PaperMoney from '../assets/img/Logo.png'
-import Button from 'react-bootstrap/Button';
 // mui
 import { CircularProgress } from "@mui/material";
 import Alert from '@mui/material/Alert';
@@ -55,7 +54,7 @@ const Index = () => {
                 <h1 className="text-4xl md:text-4xl">{userNow.name}</h1>
                 <div className="flex flex-auto justify-center my-4">
                       <img src={PaperMoney} alt="papermoney" />
-                      <Button variant="outline-primary">Primary</Button>                </div>
+                </div>
                 <div className="py-4 bg-green-700 text-white rounded-lg">
                   <h1 className="text-3xl">Your Balance:</h1>
                   <div className="flex flex-row justify-center">
@@ -67,14 +66,14 @@ const Index = () => {
               <div className="flex flex-col">
                 <div className="flex flex-col mx-4 my-2">
                   <p className="text-center">
-                    insert a value
+                    Insert a value
                   </p>
                   <input className="text-black border-gray-300 border-2 rounded-lg px-2" placeholder="value" type="number" name="" id="" value={value} onChange={(e) => setValue(Number(e.target.value))} />
                 </div>
                 <div className="flex flex-row justify-center gap-4">
                   <button className="bg-green-700 text-white py-1 px-2 my-2 rounded-md"
-                  onClick={(e) => deposit(e, value)}>Increase</button>
-                  <button className="bg-green-700 text-white py-1 px-2 my-2 rounded-md" onClick={(e) => withdraw(e, value)}>decrease</button>
+                  onClick={(e) => deposit(e, value)}>Deposit</button>
+                  <button className="bg-green-700 text-white py-1 px-2 my-2 rounded-md" onClick={(e) => withdraw(e, value)}>Withdraw</button>
                 </div>
               </div>
               <div className="flex flex-1 justify-center">
