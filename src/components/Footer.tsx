@@ -8,13 +8,13 @@ const Footer = () => {
         <h1 className="text-xl md:text-2xl font-bold">Powered By <a href="http://">Marcelo Zuza</a></h1>
         <div className="flex flex-1 gap-4">
             <div className="cols-span-1">
-                <a className='hover:underline duration-500' href="http://" target="_blank" rel="noopener noreferrer">Linkedin</a>
+                <a className='hover:underline duration-500' href="https://www.linkedin.com/in/marcelo-zuza/" target="_blank" rel="noopener noreferrer">Linkedin</a>
             </div>
             <div className="cols-span-1">
                 <h1>|</h1>
             </div>
             <div className="cols-span-1">
-                <a className='hover:underline duration-500' href="http://" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a className='hover:underline duration-500' href="https://github.com/marcelo-zuza" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
 
         </div>

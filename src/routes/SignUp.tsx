@@ -38,8 +38,8 @@ const SignUp = (props: Props) => {
         props.setLogged(true)
         props.setLoggedBy(emailRef.current!.value)
         navigate("/")
-    } catch {
-        setError("Failed to create an account")
+    } catch(e) {
+        setError("Failed to create an account " + e)
         alertError()
     }
     setLoading(false)
